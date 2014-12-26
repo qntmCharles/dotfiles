@@ -13,7 +13,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'bling/vim-airline'
 
 " #####################################################################
 
@@ -58,6 +58,7 @@ set noerrorbells		" don't beep
 set pastetoggle=<F2>	" toggle paste mode with F2. Means you can paste in text without vim messing it up.
 
 let mapleader=","
+let g:airline_powerline_fonts = 1 " use the nice patched powerline fonts. Makes the symbols actually work right.
 
 " save keystrokes when typing commands
 nnoremap ; :

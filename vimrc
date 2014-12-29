@@ -14,6 +14,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
+Plugin 'jiangmiao/auto-pairs'
 
 " #####################################################################
 

@@ -1,1 +1,14 @@
-randpw(){cat /dev/urandom| tr -dc 'a-zA-Z0-9-_!@#$%^&*()_+{}|:<>?='|fold -w 32| head -n 1 }
+source ~/dotfiles/antigen/antigen.zsh
+
+# Load the oh-my-zsh library
+antigen use oh-my-zsh 
+
+antigen bundle git
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+antigen theme ys
+
+#All done!
+antigen apply
+
+setopt correct

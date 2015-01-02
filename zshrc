@@ -12,3 +12,6 @@ antigen theme ys
 antigen apply
 
 setopt correct
+
+export GOPATH=~/go
+export PATH=$PATH:$GOPATH/bin

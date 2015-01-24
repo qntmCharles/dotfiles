@@ -14,4 +14,5 @@ antigen apply
 setopt correct
 
 export GOPATH=~/go
-export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOPATH/bin:/home/will/.cabal/bin
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib

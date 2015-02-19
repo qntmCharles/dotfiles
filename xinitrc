@@ -25,5 +25,8 @@ xrdb -merge ~/.Xdefaults
 #I'm not American.
 setxkbmap gb
 
+#My eyes!
+sh ~/.redshift
+
 #i3 is awesome.
 exec i3

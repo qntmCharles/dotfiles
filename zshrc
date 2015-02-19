@@ -18,4 +18,3 @@ export PATH=$PATH:$GOPATH/bin:/home/will/.cabal/bin
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib
 PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
-sh ~/.redshift

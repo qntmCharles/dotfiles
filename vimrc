@@ -61,6 +61,7 @@ set noerrorbells		" don't beep
 set spell " enable spelling checks
 set spelllang=en_gb " set the spell checking language
 set pastetoggle=<F2>	" toggle paste mode with F2. Means you can paste in text without vim messing it up.
+set colorcolumn=80
 
 let mapleader=","
 let g:airline_powerline_fonts = 1 " use the nice patched powerline fonts. Makes the symbols actually work right.

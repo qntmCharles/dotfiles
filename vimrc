@@ -158,5 +158,3 @@ nnoremap <leader>th :OmniSharpHighlightTypes<cr>
 nnoremap <leader>gdf :YcmCompleter GoToDefinition<cr>
 nnoremap <leader>gdc :YcmCompleter GoToDeclaration<cr>
 nnoremap <leader>g :YcmCompleter GoTo<cr>
-
-"Don't ask to save when changing buffers (i.e. when jumping to a type definition)

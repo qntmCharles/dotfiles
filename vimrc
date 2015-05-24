@@ -18,6 +18,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'fatih/vim-go'
 Plugin 'tpope/vim-dispatch'
 Plugin 'OmniSharp/omnisharp-vim'
+Plugin 'scrooloose/nerdtree'
 
 " #####################################################################
 
@@ -76,7 +77,7 @@ imap jj <Esc>
 map <up> <nop>
 map <down> <nop>
 map <left> <nop>
-map <right> <nop>i
+map <right> <nop>
 
 imap <up> <nop>
 imap <down> <nop>
@@ -92,6 +93,7 @@ nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 " Autosave all buffers when vim loses focus
 au FocusLost * :wa
 
+autocmd BufNewFile,BufRead *.vert,*.frag,*.glsl set ft=c
 
 augroup omnisharp_commands
     autocmd!

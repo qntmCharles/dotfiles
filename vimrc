@@ -19,6 +19,8 @@ Plugin 'fatih/vim-go'
 Plugin 'tpope/vim-dispatch'
 Plugin 'OmniSharp/omnisharp-vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'rust-lang/rust.vim'
+Plugin 'phildawes/racer'
 
 " #####################################################################
 
@@ -64,7 +66,7 @@ set spelllang=en_gb " set the spell checking language
 set pastetoggle=<F2>	" toggle paste mode with F2. Means you can paste in text without vim messing it up.
 set colorcolumn=80
 
-let mapleader=","
+let mapleader="\<Space>"
 let g:airline_powerline_fonts = 1 " use the nice patched powerline fonts. Makes the symbols actually work right.
 
 " save keystrokes when typing commands
@@ -89,6 +91,8 @@ nnoremap <leader>v V`]
 
 " Open .vimrc in a vertical split, for quick edits
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+nnoremap <leader>o :CtrlP<CR>
+nnoremap <leader>w :w<CR>
 
 " Autosave all buffers when vim loses focus
 au FocusLost * :wa
@@ -160,3 +164,6 @@ nnoremap <leader>th :OmniSharpHighlightTypes<cr>
 nnoremap <leader>gdf :YcmCompleter GoToDefinition<cr>
 nnoremap <leader>gdc :YcmCompleter GoToDeclaration<cr>
 nnoremap <leader>g :YcmCompleter GoTo<cr>
+
+" Racer setup
+let g:racer_cmd = "/home/will/Clones/racer/target/release/racer"

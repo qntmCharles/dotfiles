@@ -1,9 +1,21 @@
+;; Package Management
 (load "package")
-(package-initialize)
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.org/packages/") t)
  
 (setq package-archive-enable-alist '(("melpa" deft magit)))
+
+(package-initialize)
+
+(setq required-packages 
+	'(evil evil-tabs evil-leader helm helm-core helm-projectile projectile key-chord))
+
+(unless package-archive-contents
+	(package-refresh-contents))
+
+(dolist (package required-packages)
+	(unless (package-installed-p package)
+		(package-install package)))
 
 (menu-bar-mode 0)
 

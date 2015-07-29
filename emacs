@@ -1,17 +1,17 @@
-;; Package Management
+; Package Management
 (load "package")
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.org/packages/") t)
- 
+
 (setq package-archive-enable-alist '(("melpa" deft magit)))
 
 (package-initialize)
 
 (setq required-packages 
-	'(evil evil-tabs evil-leader helm helm-core helm-projectile projectile key-chord))
+	'(evil evil-tabs evil-leader helm helm-core helm-projectile projectile key-chord linum-relative color-theme-solarized))
 
 (unless package-archive-contents
-	(package-refresh-contents))
+(package-refresh-contents))
 
 (dolist (package required-packages)
 	(unless (package-installed-p package)
@@ -57,3 +57,13 @@
 
 (define-key evil-normal-state-map " " 'helm-my-buffers)
 (key-chord-define evil-insert-state-map "jj" [escape])
+
+;; Linum
+(require 'linum-relative)
+(setq linum-relative-current-symbol "")
+(global-linum-mode t)
+
+;; Misc
+(setq scroll-step 1)
+
+(load-theme 'solarized)

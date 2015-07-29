@@ -1,4 +1,4 @@
-; Package Management
+;; Package Management
 (load "package")
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.org/packages/") t)
@@ -16,7 +16,8 @@
 	  helm-projectile
 	  projectile
 	  key-chord
-	  linum-relative))
+	  linum-relative
+	  color-theme-solarized))
 
 (unless package-archive-contents
 (package-refresh-contents))
@@ -50,20 +51,16 @@
 
 (global-set-key (kbd "M-x") 'helm-M-x)
 
-(defun helm-my-buffers ()
-  (interactive)
-  (let ((helm-ff-transformer-show-only-basename nil))
-    (helm-other-buffer '(helm-c-source-buffers-list
-			 helm-c-source-elscreen
-			 helm-c-source-recentf
-			 helm-c-source-locate)
-		                            "*helm-my-buffers*")))
+;; Actual Editing
+(setq tab-width 4) ; or any other preferred value
+(defvaralias 'c-basic-offset 'tab-width)
+(defvaralias 'cperl-indent-level 'tab-width)
 
-;;; Key Bindings
+;; Key Bindings
 (key-chord-mode 1)
 (setq key-chord-two-keys-delay 0.5)
 
-(define-key evil-normal-state-map " " 'helm-my-buffers)
+(define-key evil-normal-state-map " " 'helm-find-files)
 (key-chord-define evil-insert-state-map "jj" [escape])
 
 ;; Linum
@@ -75,6 +72,31 @@
 (setq scroll-step 1)
 
 
-; Theme
-(add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized")
+;; Theme and Appearance
 (load-theme 'solarized t)
+
+(require 'whitespace)
+
+(setq whitespace-style
+      '(face empty newline newline-mark tabs tab-mark lines-tail trailing))
+      
+(setq whitespace-display-mappings
+      '(
+	(newline-mark 10 [8629 10])
+	(tab-mark 9 [9655 9] [92 9])))
+
+(global-whitespace-mode t)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(linum-relative-current-face ((t (:inherit linum :background "#444444" :foreground "blue" :weight bold))))
+ '(whitespace-tab ((t (:foreground "white")))))

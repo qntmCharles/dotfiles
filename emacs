@@ -8,7 +8,15 @@
 (package-initialize)
 
 (setq required-packages 
-	'(evil evil-tabs evil-leader helm helm-core helm-projectile projectile key-chord linum-relative color-theme-solarized))
+	'(evil
+	  evil-tabs
+	  evil-leader
+	  helm
+	  helm-core
+	  helm-projectile
+	  projectile
+	  key-chord
+	  linum-relative))
 
 (unless package-archive-contents
 (package-refresh-contents))
@@ -66,4 +74,7 @@
 ;; Misc
 (setq scroll-step 1)
 
-(load-theme 'solarized)
+
+; Theme
+(add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized")
+(load-theme 'solarized t)

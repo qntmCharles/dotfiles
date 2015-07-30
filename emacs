@@ -38,18 +38,21 @@
 (setq evil-leader/in-all-states 1)
 (global-evil-leader-mode)
 
-(evil-leader/set-leader "<space>")
+(evil-leader/set-leader "<SPC>")
+(evil-leader/set-key
+	"h" 'helm-flycheck)
 
 ;;; Helm config
 (helm-mode 1)
 (require 'helm-config)
 (require 'helm-misc)
 (require 'helm-locate)
+(require 'helm-flycheck)
 (setq helm-quick-update t)
 (setq helm-bookmark-show-location t)
 (setq helm-buffers-fuzzy-matching t)
 
-(global-set-key (kbd "M-x") 'helm-M-x)
+;(global-set-key (kbd "M-x") 'helm-M-x)
 
 ;; Actual Editing
 (setq tab-width 4) ; or any other preferred value
@@ -100,3 +103,10 @@
  ;; If there is more than one, they won't work right.
  '(linum-relative-current-face ((t (:inherit linum :background "#444444" :foreground "blue" :weight bold))))
  '(whitespace-tab ((t (:foreground "white")))))
+
+;; Autocomplete and Syntax Checking
+(add-hook 'after-init-hook #'global-flycheck-mode)
+(add-hook 'c++-mode-hook
+          (lambda () (setq flycheck-clang-include-path
+	                             (list (expand-file-name "~/.local/include/")))))
+(add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++14")))

@@ -17,7 +17,7 @@ fi
 # ...or the Window Manager of your choice
 
 #Setup the displays.
-xrandr --output DisplayPort-1 --mode 1920x1080 --pos 0x0 --rotate left --output DisplayPort-0 --off --output DVI-1 --off --output DVI-0 --mode 1920x1080 --pos 1080x432 --rotate normal --output HDMI-0 --off
+sh ~/.screenlayout/default.sh
 
 #Sort out the Xdefaults colour scheme things, ensures all the #defines work. Otherwise, urxvt ends up all pink and horrible.
 xrdb -merge ~/.Xdefaults

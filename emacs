@@ -20,7 +20,10 @@
 	  color-theme-solarized
 	  flycheck
 	  helm-flycheck
-	  ycmd))
+	  ycmd
+	  company
+	  company-ycmd
+	  omnisharp))
 
 (unless package-archive-contents
 (package-refresh-contents))
@@ -110,9 +113,19 @@
 	  (lambda () (setq flycheck-clang-language-standard "c++14")))
 
 (require 'ycmd)
+(require 'company-ycmd)
 (ycmd-setup)
+(company-ycmd-setup)
 (set-variable 'ycmd-global-config "/home/wjh/dotfiles/.ycm_extra_conf.py")
 (add-hook 'c++-mode-hook 'ycmd-mode)
 
 (set-variable 'ycmd-server-command
 	      '("python2" "/home/wjh/dotfiles/ycmd/ycmd"))
+
+(set-variable 'omnisharp-server-executable-path "/home/wjh/dotfiles/ycmd/third_party/OmniSharpServer/OmniSharp/bin/Debug/OmniSharp.exe")
+
+(add-hook 'csharp-mode-hook 'company-mode)
+(add-hook 'csharp-mode-hook 'omnisharp-mode)
+
+(eval-after-load 'company
+  '(add-to-list 'company-backends 'company-omnisharp))

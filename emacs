@@ -17,7 +17,10 @@
 	  projectile
 	  key-chord
 	  linum-relative
-	  color-theme-solarized))
+	  color-theme-solarized
+	  flycheck
+	  helm-flycheck
+	  ycmd))
 
 (unless package-archive-contents
 (package-refresh-contents))
@@ -96,17 +99,20 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(linum-relative-current-face ((t (:inherit linum :background "#444444" :foreground "blue" :weight bold))))
- '(whitespace-tab ((t (:foreground "white")))))
 
 ;; Autocomplete and Syntax Checking
+
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (add-hook 'c++-mode-hook
           (lambda () (setq flycheck-clang-include-path
-	                             (list (expand-file-name "~/.local/include/")))))
-(add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++14")))
+	  	  (list (expand-file-name "~/.local/include/")))))
+(add-hook 'c++-mode-hook
+	  (lambda () (setq flycheck-clang-language-standard "c++14")))
+
+(require 'ycmd)
+(ycmd-setup)
+(set-variable 'ycmd-global-config "/home/wjh/dotfiles/.ycm_extra_conf.py")
+(add-hook 'c++-mode-hook 'ycmd-mode)
+
+(set-variable 'ycmd-server-command
+	      '("python2" "/home/wjh/dotfiles/ycmd/ycmd"))

@@ -19,3 +19,5 @@ export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib
 PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 PATH=$HOME/.linuxbrew/bin:$PATH
 
+alias emacs="TERM=xterm-256color emacsclient -nw"
+

@@ -23,7 +23,8 @@
 	  ycmd
 	  company
 	  company-ycmd
-	  omnisharp))
+	  omnisharp
+      smart-tabs-mode))
 
 (unless package-archive-contents
 (package-refresh-contents))
@@ -58,20 +59,15 @@
 (setq helm-bookmark-show-location t)
 (setq helm-buffers-fuzzy-matching t)
 
-;(global-set-key (kbd "M-x") 'helm-M-x)
-
-;; Actual Editing
-(setq tab-width 4) ; or any other preferred value
-(defvaralias 'c-basic-offset 'tab-width)
-(defvaralias 'cperl-indent-level 'tab-width)
 
 ;; Key Bindings
 (key-chord-mode 1)
 (setq key-chord-two-keys-delay 0.5)
 
-(define-key evil-normal-state-map " " 'helm-find-files)
+(define-key evil-normal-state-map (kbd "C-p") 'helm-find-files)
 (key-chord-define evil-insert-state-map "jj" [escape])
 
+(global-set-key (kbd "M-x") 'helm-M-x)
 ;; Linum
 (require 'linum-relative)
 (setq linum-relative-current-symbol "")
@@ -96,21 +92,8 @@
 
 (global-whitespace-mode t)
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-
 ;; Autocomplete and Syntax Checking
 
-(add-hook 'after-init-hook #'global-flycheck-mode)
-(add-hook 'c++-mode-hook
-          (lambda () (setq flycheck-clang-include-path
-	  	  (list (expand-file-name "~/.local/include/")))))
-(add-hook 'c++-mode-hook
-	  (lambda () (setq flycheck-clang-language-standard "c++14")))
 
 (require 'ycmd)
 (require 'company-ycmd)
@@ -124,8 +107,35 @@
 
 (set-variable 'omnisharp-server-executable-path "/home/wjh/dotfiles/ycmd/third_party/OmniSharpServer/OmniSharp/bin/Debug/OmniSharp.exe")
 
-(add-hook 'csharp-mode-hook 'company-mode)
+(add-hook 'after-init-hook #'global-flycheck-mode)
+(add-hook 'c++-mode-hook
+          (lambda () (setq flycheck-clang-include-path
+		                             (list (expand-file-name "~/.local/include/")))))
+(add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++14")))
+
+(add-hook 'after-init-hook 'global-company-mode)
 (add-hook 'csharp-mode-hook 'omnisharp-mode)
 
 (eval-after-load 'company
   '(add-to-list 'company-backends 'company-omnisharp))
+
+(setq default-tab-width 4)
+(smart-tabs-insinuate 'c++)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(whitespace-tab ((t (:foreground "brightcyan")))))
+
+;; use Shift+arrow_keys to move cursor around split panes
+(windmove-default-keybindings)
+
+;; when cursor is on edge, move to the other side, as in a toroidal space
+(setq windmove-wrap-around t )

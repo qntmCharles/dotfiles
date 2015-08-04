@@ -139,3 +139,6 @@
 
 ;; when cursor is on edge, move to the other side, as in a toroidal space
 (setq windmove-wrap-around t )
+
+(add-to-list 'auto-mode-alist '("/mutt" . mail-mode))
+(add-hook 'mail-mode-hook 'turn-on-auto-fill)

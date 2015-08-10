@@ -24,7 +24,8 @@
 	  company
 	  company-ycmd
 	  omnisharp
-      smart-tabs-mode))
+      smart-tabs-mode
+	  clang-format))
 
 (unless package-archive-contents
 (package-refresh-contents))
@@ -47,7 +48,8 @@
 
 (evil-leader/set-leader "<SPC>")
 (evil-leader/set-key
-	"h" 'helm-flycheck)
+	"h" 'helm-flycheck
+	"f" 'clang-format-buffer)
 
 ;;; Helm config
 (helm-mode 1)

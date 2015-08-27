@@ -12,6 +12,7 @@ antigen theme ys
 antigen apply
 
 setopt correct
+setopt vi
 
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin:/home/will/.cabal/bin

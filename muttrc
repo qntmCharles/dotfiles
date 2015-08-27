@@ -130,11 +130,9 @@ set from     = "will@willhuxtable.com"
 source .muttrcsmtp
 unset record
 
-auto_view text/html
-alternative_order text/plain text/enriched text/html  
-
-
 set pgp_sign_as=0x91B0AB7D
 set pgp_replyencrypt=yes
 set pgp_timeout=1800
 source ~/.mutt/gpg.rc
+
+macro pager \cb <pipe-entry>'urlview'<enter> 'Follow links with urlview'

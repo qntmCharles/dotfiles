@@ -1,29 +1,7 @@
-Xcursor.theme: Neutral
 
-urxvt*perl-lib:            /usr/lib/urxvt/perl/
-urxvt*perl-ext-common:        default,matcher
-urxvt*urlLauncher:        /usr/bin/google-chrome-stable
-urxvt*matcher.button:        1
-urxvt*matcher.pattern.1:   \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
-
-URxvt*buffered: true
-URxvt*cursorBlink: true
-URxvt*underlineColor: #2aa198
-URxvt*font:  xft:DejaVu Sans Mono for Powerline:size=9
-URxvt*boldFont: xft:DejaVu Sans Mono for Powerline:size=9
-URxvt*depth: 32
-URxvt*borderless: 1
-URxvt*scrollBar: false
-URxvt*loginShell: true
-Urxvt*secondaryScroll:  true    # Enable Shift-PageUp/Down in screen
-URxvt*saveLines: 5000
-URxvt*termName: xterm-256color 
-
-
-! Solarized color scheme for the X Window System
-!
- http://ethanschoonover.com/solarized
-
+! ------------------------------------------------------------------------------
+! --> Solarized Colours
+! ------------------------------------------------------------------------------
 
 ! Common
 
@@ -49,23 +27,29 @@ URxvt*termName: xterm-256color
 #define S_base3         #fdf6e3
 
 
-! Light
+! ------------------------------------------------------------------------------
+! --> X config
+! ------------------------------------------------------------------------------
 
-! #define S_base03        #fdf6e3
-! #define S_base02        #eee8d5
-! #define S_base01        #93a1a1
-! #define S_base00        #839496
-! #define S_base0         #657b83
-! #define S_base1         #586e75
-! #define S_base2         #073642
-! #define S_base3         #002b36
+Xcursor.theme: Neutral
+
+! ------------------------------------------------------------------------------
+! --> URXVT config
+! ------------------------------------------------------------------------------
 
 
-! To only apply colors to your terminal, for example, prefix
-! the color assignment statement with its name. Example:
-!
-! URxvt*background:            S_base03
-
+URxvt*buffered: true
+URxvt*cursorBlink: true
+URxvt*underlineColor: #2aa198
+URxvt*font:  xft:DejaVu Sans Mono for Powerline:size=9
+URxvt*boldFont: xft:DejaVu Sans Mono for Powerline:size=9
+URxvt*depth: 32
+URxvt*borderless: 1
+URxvt*scrollBar: false
+URxvt*loginShell: true
+Urxvt*secondaryScroll:  true    # Enable Shift-PageUp/Down in screen
+URxvt*saveLines: 5000
+URxvt*termName: xterm-256color 
 URxvt*background:              S_base03
 URxvt*foreground:              S_base0
 URxvt*fading:                  40
@@ -91,3 +75,20 @@ URxvt*color13:                 S_violet
 URxvt*color14:                 S_base1
 URxvt*color15:                 S_base3
 
+
+! ------------------------------------------------------------------------------
+! --> Rofi config
+! ------------------------------------------------------------------------------
+
+rofi.opacity: 2
+rofi.lines: 8
+rofi.terminal: rxvt-unicode
+rofi.font: DejaVu Sans Mono 14
+rofi.padding: 10
+rofi.levenshtein-sort: true
+rofi.separator-style: solid
+rofi.hide-scrollbar: true
+rofi.bg: S_base03
+rofi.fg: S_base0
+rofi.bw: 50
+rofi.width: 50

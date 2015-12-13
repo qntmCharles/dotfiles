@@ -25,6 +25,9 @@ xrdb -merge ~/.Xresources
 #I'm not American.
 setxkbmap gb
 
+# lockscreen
+xss-lock -- i3lock -n -i background_image.png &
+
 #My eyes!
 sh ~/.redshift
 

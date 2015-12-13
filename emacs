@@ -148,3 +148,7 @@
 (add-to-list 'auto-mode-alist '("/mutt" . mail-mode))
 (add-hook 'mail-mode-hook 'turn-on-auto-fill)
 (electric-pair-mode 1)
+
+ (require 'epa-file)
+     (epa-file-enable)
+(put 'erase-buffer 'disabled nil)

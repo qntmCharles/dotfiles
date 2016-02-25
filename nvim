@@ -1,0 +1,48 @@
+" Plugins """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+call plug#begin('~/.config/nvim/plugged')
+
+Plug 'altercation/vim-colors-solarized'
+
+call plug#end()
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Editing """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set tabstop=4
+set noexpandtab
+set shiftwidth=4
+set autoindent
+set smartindent
+set cindent
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Appearance """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Display current line number as well as relative ones
+set number
+set relativenumber
+
+" I dislike text beyond column 80, so show the column up
+set colorcolumn=80
+
+" Solarized is awesome
+colorscheme solarized
+
+" Because solarized light is weird
+set background=dark
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Key bindings """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+map <S-h> <C-W>h
+map <S-j> <C-W>j
+map <S-k> <C-W>k
+map <S-l> <C-W>l
+
+imap jj <Esc>
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

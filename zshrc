@@ -14,14 +14,9 @@ antigen apply
 setopt correct
 
 export GOPATH=~/go
-export PATH=$PATH:$GOPATH/bin:$HOME/.cabal/bin
+export PATH=$PATH:$GOPATH/bin:$HOME/.cabal/bin;
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib
-export EDITOR="emacsclient -nw"
-PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
-PATH=$HOME/.linuxbrew/bin:$PATH
-export PATH="$HOME/opt/cross/bin:$PATH"
-
-alias emacs="TERM=xterm-256color emacsclient -nw"
+export EDITOR="nvim"
 
 HOSTNAME="$(hostname)"
 HOSTNAME_SHORT="${HOSTNAME%%.*}"
@@ -33,4 +28,4 @@ SAVEHIST=100000
 
 mkdir -p $(dirname $HISTFILE)
 
-. /home/wjh/.nix-profile/etc/profile.d/nix.sh
+. /home/$USER/.nix-profile/etc/profile.d/nix.sh

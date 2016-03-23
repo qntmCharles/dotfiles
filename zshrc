@@ -32,3 +32,5 @@ HISTSIZE=100000
 SAVEHIST=100000
 
 mkdir -p $(dirname $HISTFILE)
+
+. /home/wjh/.nix-profile/etc/profile.d/nix.sh

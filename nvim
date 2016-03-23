@@ -42,6 +42,10 @@ map <S-h> <C-W>h
 map <S-j> <C-W>j
 map <S-k> <C-W>k
 map <S-l> <C-W>l
+tnoremap <S-h> <C-\><C-n><C-w>h
+tnoremap <S-j> <C-\><C-n><C-w>j
+tnoremap <S-k> <C-\><C-n><C-w>k
+tnoremap <S-l> <C-\><C-n><C-w>l
 
 imap jj <Esc>
 

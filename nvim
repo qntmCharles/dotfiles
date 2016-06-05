@@ -3,23 +3,115 @@
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'altercation/vim-colors-solarized'
+Plug 'davidhalter/jedi-vim'
+Plug 'fatih/vim-go'
+
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
+Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+
+Plug 'zchee/deoplete-go', { 'do': 'make'}
 
 call plug#end()
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" General """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+filetype plugin on
+filetype indent on
+
+" Other programs might edit the files too. Automatically load!
+set autoread
+
+let mapleader=" "
+let g:mapleader=" "
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Deoplete """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_ignore_case = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" vim-go """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
+
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+
+au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
+
+au FileType go nmap <Leader>s <Plug>(go-implements)
+
+au FileType go nmap <Leader>e <Plug>(go-rename)
+
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_interfaces = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
+let g:go_fmt_command = "goimports"
+
+au FileType go nmap <leader>rt <Plug>(go-run-tab)
+au FileType go nmap <Leader>rs <Plug>(go-run-split)
+au FileType go nmap <Leader>rv <Plug>(go-run-vertical)
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Editing """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+
 set tabstop=4
-set noexpandtab
+set noexpandtab " I'm a tabs guy. Spaces are cool for alignment.
 set shiftwidth=4
 set autoindent
 set smartindent
 set cindent
+set copyindent
 
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Appearance """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Colours, fonts """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+syntax enable
+"
+" Solarized is awesome
+colorscheme solarized
+
+" Because solarized light is weird
+set background=dark
+
+set encoding=utf8
+
+set ffs=unix,dos,mac
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Files & undo """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Backups are only kept while writing the new file, removed after successful
+" write. Swap files are annoying.
+set nobackup
+set wb
+set noswapfile
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Interface """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Display current line number as well as relative ones
 set number
@@ -28,25 +120,62 @@ set relativenumber
 " I dislike text beyond column 80, so show the column up
 set colorcolumn=80
 
-" Solarized is awesome
-colorscheme solarized
+" Fancy incremental searching!
+set incsearch
 
-" Because solarized light is weird
-set background=dark
+" Shows matching brackets
+set showmatch
 
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Key bindings """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" Escape is a very long way away from the home row.
+imap jj <Esc>
 
-map <S-h> <C-W>h
-map <S-j> <C-W>j
-map <S-k> <C-W>k
-map <S-l> <C-W>l
+" Make navigating windows *much* easier.
+map <C-h> <C-W>h
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-l> <C-W>l
+
+" Same thing, but work in terminal windows too :)
 tnoremap <S-h> <C-\><C-n><C-w>h
 tnoremap <S-j> <C-\><C-n><C-w>j
 tnoremap <S-k> <C-\><C-n><C-w>k
 tnoremap <S-l> <C-\><C-n><C-w>l
 
-imap jj <Esc>
+" For managing tabs
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove
 
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Super speedy saving
+nmap <leader>w :w!<cr>
+
+" Annoying when things are highlighted after searches and I don't want them to
+" be.
+nmap <leader>nh :noh<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Useful stuff """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Return to last edit position when opening files (You want this!)
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
+" Remember info about open buffers on close
+set viminfo^=%
+
+" Delete trailing white space on save, useful for Python and CoffeeScript ;)
+func! DeleteTrailingWS()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+autocmd BufWrite *.py :call DeleteTrailingWS()
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

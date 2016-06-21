@@ -26,10 +26,8 @@ xrdb -merge ~/.Xresources
 setxkbmap gb
 
 # lockscreen
-xss-lock -- exec ~/.lock.sh &
 
 #My eyes!
-sh ~/.redshift
 
 #i3 is awesome.
 exec i3

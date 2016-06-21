@@ -1,21 +1,9 @@
-source ~/dotfiles/antigen/antigen.zsh
-
-# Load the oh-my-zsh library
-antigen use oh-my-zsh 
-
-antigen bundle git
-antigen bundle zsh-users/zsh-syntax-highlighting
-
-antigen theme ys
-
-# All done!
-antigen apply
+. /usr/lib/python3.5/site-packages/powerline/bindings/zsh/powerline.zsh
 
 setopt correct
 
 export GOPATH=~/go
-export PATH=$PATH:$GOPATH/bin:$HOME/.cabal/bin;
-export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib
+export PATH=$PATH:$GOPATH/bin
 export EDITOR="nvim"
 
 HOSTNAME="$(hostname)"
@@ -27,5 +15,3 @@ HISTSIZE=100000
 SAVEHIST=100000
 
 mkdir -p $(dirname $HISTFILE)
-
-. /home/$USER/.nix-profile/etc/profile.d/nix.sh

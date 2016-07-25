@@ -4,7 +4,10 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'altercation/vim-colors-solarized'
 Plug 'davidhalter/jedi-vim'
+Plug 'lervag/vimtex'
 Plug 'fatih/vim-go'
+Plug 'wjh/vim-comment'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 function! DoRemote(arg)
   UpdateRemotePlugins
@@ -99,6 +102,8 @@ set encoding=utf8
 
 set ffs=unix,dos,mac
 
+set hls!
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Files & undo """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -157,6 +162,13 @@ nmap <leader>w :w!<cr>
 " Annoying when things are highlighted after searches and I don't want them to
 " be.
 nmap <leader>nh :noh<cr>
+
+map <leader>f :FZF<cr>
+
+noremap <Leader>y "*y
+noremap <Leader>p "*p
+noremap <Leader>Y "+y
+noremap <Leader>P "+p
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 

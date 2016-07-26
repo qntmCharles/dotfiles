@@ -19,6 +19,9 @@ Plug 'zchee/deoplete-clang'
 
 call plug#end()
 
+" Install fzf
+set rtp+=~/.fzf
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 

@@ -1,17 +1,20 @@
-#Vim colour scheme setup
+echo "Installing vim-plug to neovim..."
 
-mkdir -p ~/.vim/colors
-curl -o ~/.vim/colors/solarized.vim https://raw.githubusercontent.com/altercation/vim-colors-solarized/master/colors/solarized.vim
+curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-mkdir -p ~/.local/include
-mkdir -p ~/.local/bin
+echo "Installing fonts..."
+./fonts/install.sh
 
-git clone --recursive https://github.com/Valloric/ycmd.git
-./build.py --clang-completer --omnisharp-completer --gocode-completer-
+echo "Symlinking config..."
 
 #Attempt symlinking
-ln -s `pwd`/emacs ~/.emacs
-ln -s `pwd`/vimrc ~/.vimrc
-ln -s `pwd`/xinitrc ~/.xinitrc
-ln -s `pwd`/Xresources ~/.Xresources
-ln -s `pwd`/lock.sh ~/.lock.sh
+ln -s `pwd`/nvim ~/.config/nvim/init.vim
+ln -s `pwd`/i3/config ~/.config/i3/config
+
+echo "Installing powerline..."
+pip install --user powerline-status
+
+echo "Installing fzf..."
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install

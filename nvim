@@ -12,8 +12,10 @@ endfunction
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 
 Plug 'zchee/deoplete-go', { 'do': 'make'}
+Plug 'zchee/deoplete-clang'
 
 call plug#end()
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
@@ -31,9 +33,16 @@ let g:mapleader=" "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Deoplete """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set wildmenu
+set completeopt-=preview
 
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_ignore_case = 1
+inoremap <silent><expr> <Tab>
+            \ pumvisible() ? "\<C-n>" : "<Tab>"
+" deoplete-clang opions
+let g:deoplete#sources#clang#libclang_path = "/usr/lib/libclang.so"
+let g:deoplete#sources#clang#clang_header ="/usr/include/clang/"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 

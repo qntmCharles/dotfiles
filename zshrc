@@ -5,6 +5,7 @@ export EDITOR="nvim"
 export PATH=$PATH:$GOPATH/bin:$HOME/.local/bin
 
 . ~/.local/lib/python3.5/site-packages/powerline/bindings/zsh/powerline.zsh
+. ~/dotfiles/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Completion
 autoload -U compinit

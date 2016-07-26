@@ -16,6 +16,7 @@ set $mod Mod4
 for_window [title="^Floating$"] floating enable
 for_window [title="^Spriter$"] floating enable
 for_window [title="^xmessage$"] floating enable
+for_window [title="Blackout"] floating enable
 for_window [window_role="pop-up"] floating enable
 # archlinux theme for i3 by okraits
 # http://okraits.de

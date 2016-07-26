@@ -7,15 +7,14 @@ Plug 'davidhalter/jedi-vim'
 Plug 'lervag/vimtex'
 Plug 'fatih/vim-go'
 Plug 'wjh/vim-comment'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+Plug 'Shougo/deoplete.nvim'
+Plug 'zchee/deoplete-clang'
 
 Plug 'zchee/deoplete-go', { 'do': 'make'}
-Plug 'zchee/deoplete-clang'
 
 call plug#end()
 
@@ -44,11 +43,13 @@ set completeopt-=preview
 
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_ignore_case = 1
+
 inoremap <silent><expr> <Tab>
             \ pumvisible() ? "\<C-n>" : "<Tab>"
-" deoplete-clang opions
+
 let g:deoplete#sources#clang#libclang_path = "/usr/lib/libclang.so"
-let g:deoplete#sources#clang#clang_header ="/usr/include/clang/"
+let g:deoplete#sources#clang#clang_header = "/usr/include/clang/"
+let g:deoplete#sources#clang#clang_complete_database = getcwd()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -126,6 +127,10 @@ set nobackup
 set wb
 set noswapfile
 
+silent !mkdir ~/.vim/backups > /dev/null 2>&1
+set undodir=~/.vim/backups
+set undofile
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Interface """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -201,5 +206,22 @@ func! DeleteTrailingWS()
   exe "normal `z"
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" FZF """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:fzf_colors =
+            \ { 'fg':      ['fg', 'Normal'],
+            \ 'bg':      ['bg', 'Normal'],
+            \ 'hl':      ['fg', 'Comment'],
+            \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+            \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+            \ 'hl+':     ['fg', 'Statement'],
+            \ 'info':    ['fg', 'PreProc'],
+            \ 'prompt':  ['fg', 'Conditional'],
+            \ 'pointer': ['fg', 'Exception'],
+            \ 'marker':  ['fg', 'Keyword'],
+            \ 'spinner': ['fg', 'Label'],
+            \ 'header':  ['fg', 'Comment'] }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
